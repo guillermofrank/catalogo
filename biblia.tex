@@ -1,0 +1,241 @@
+\documentclass[a4paper,12pt,twocolumn]{article}
+
+\usepackage[a4paper,margin=1cm,tmargin=2.3cm,bmargin=2cm]{geometry}
+
+
+% tmargin=2.8cm,bmargin=0cm
+%                ,hmargin=1.0cm,vmargin=1.0cm
+%                tmargin=1.2cm, %top margin = 1.2 cm
+%                bmargin=0.8cm, %bottom margin = 0.8 cm
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage[backend=biber,sorting=biblia]{biblatex}
+
+\DeclareFieldFormat[inbook]{part}{\small\sc#1\\} 
+\DeclareFieldFormat[inbook]{chapter}{\footnotesize\sc\hspace*{6mm}#1} 
+\DeclareFieldFormat[inbook]{volume}{\footnotesize\sc#1} 
+\DeclareFieldFormat[inbook]{number}{\footnotesize\sc#1}
+\DeclareFieldFormat[inbook]{title}{\footnotesize#1.} 
+
+\renewcommand{\baselinestretch}{0.2}
+\setlength{\biblabelsep}{0pt}
+\setlength{\bibitemsep}{0pt}
+\setlength{\parsep}{0pt}
+
+\newbibmacro*{bib:svauthor}{%
+  \savefield{part}{\lastauthor}}
+
+\newbibmacro*{verifyauthor}{%
+    \iffieldequals{part}{\lastauthor}
+        {}
+        {{\footnotesize\printfield{part}}\\}%
+    \usebibmacro{bib:svauthor}}
+
+\newbibmacro*{newauthor}{%
+    \usebibmacro{verifyauthor}}
+
+\DeclareBibliographyDriver{inbook}{
+  \usebibmacro{newauthor}%
+   \nopunct\unspace\\ \\
+\printfield{chapter}\addcolon\printfield{volume}-\printfield{number}%
+   \addcomma\addspace\printfield{title}\finentry}
+  
+\DeclareSortingScheme{biblia}{
+\sort{
+\field[padside=left,padwidth=3,padchar=0]{chapter}
+}
+\sort{
+\field[padside=left,padwidth=3,padchar=0]{volume}
+}
+\sort{
+\field[padside=left,padwidth=3,padchar=0]{number}
+}
+\sort{
+\field{title}
+}
+}
+
+\DeclareFieldFormat{labelnumberwidth}{}%
+
+\addbibresource{database.bib}
+
+\newcommand{\changefont}[3]{\fontfamily{#1} \fontseries{#2} \fontshape{#3} 
+\selectfont}
+
+\begin{document}
+
+\pagestyle{fancy}
+\fancyhead{}%
+\fancyfoot{}%
+
+\lhead{\changefont{cmss}{bx}{n} \small Cantos Religiosos Populares}
+\chead{\changefont{cmss}{bx}{n} \Large Citas Bíblicas}
+\rhead{\changefont{cmss}{bx}{n} \small rev. 2015}
+\rfoot{\changefont{cmss}{bx}{n} \footnotesize CITAS BÍBLICAS - 
+\normalsize\thepage}
+
+%{\noindent\normalsize\textsc{citas bíblicas}}
+
+
+\nocite{*}
+%\vspace*{-6mm}
+
+
+\printbibliography[omitnumbers=true,keyword=Genesis,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Exodo,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Levitico,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Numeros,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Deuteronomio,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Josue,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Jueces,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword={1 Samuel},heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword={2 Samuel},heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword={1 Reyes},heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword={2 Reyes},heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Isaias,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Jeremias,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Ezequiel,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Oseas,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Joel,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Amos,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Abdias,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Jonas,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Miqueas,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Nahum,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Habacuc,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Sofonias,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Ageo,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Zacarias,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Malaquias,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Salmos,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Job,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Proverbios,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Rut,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Cantares,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Eclesiastes,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Lamentaciones,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Ester,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Daniel,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Esdras,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Nehemias,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword={1 Cronicas},heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword={2 Cronicas},heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword={Ester Supl},heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Judit,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Tobias,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword={1 Macabeos},heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword={2 Macabeos},heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Sabiduria,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Eclesiastico,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Baruc,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword={Carta de Jeremias},heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword={Daniel Supl},heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Mateo,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Marcos,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Lucas,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Juan,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Hechos,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Romanos,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword={1 Corintios},heading=none] 
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword={2 Corintios},heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Galatas,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Efesios,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Filipenses,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Colosenses,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword={1 Tesalonicenses},heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword={2 Tesalonicenses},heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword={1 Timoteo},heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword={2 Timoteo},heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Tito,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Filemon,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Hebreos,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Santiago,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword={1 Pedro},heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword={2 Pedro},heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword={1 Juan},heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword={2 Juan},heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword={3 Juan},heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Judas,heading=none]
+\vspace{0mm}
+\printbibliography[omitnumbers=true,keyword=Apocalipsis,heading=none]
+\vspace{0mm}
+
+\end{document}

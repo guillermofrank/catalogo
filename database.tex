@@ -1,0 +1,102 @@
+\documentclass[a4paper,12pt,twocolumn]{article}
+
+\usepackage[a4paper,margin=1cm,tmargin=2.3cm,bmargin=2cm]{geometry}
+
+
+% tmargin=2.8cm,bmargin=0cm
+%                ,hmargin=1.0cm,vmargin=1.0cm
+%                tmargin=1.2cm, %top margin = 1.2 cm
+%                bmargin=0.8cm, %bottom margin = 0.8 cm
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage[backend=biber,sorting=titulos]{biblatex}
+
+%\renewbibmacro{in:}{}
+
+%\AtEveryBibitem{
+%\clearlist{publisher}
+%}
+
+\DeclareFieldFormat[inbook]{title}{\bf #1\\} 
+
+\DeclareBibliographyDriver{inbook}{%
+  \printfield{title}%
+  %\newunit\newblock
+  \printnames{author}%
+  %\newunit\newblock
+  %\printlist{publisher}%
+  %\newunit
+  %\printlist{location}%
+  %\newunit
+  \space
+  (\printlist{location}\addcomma\space\printfield{year})
+  \finentry}
+  
+\DeclareSortingScheme{titulos}{
+\sort{
+\field{title}
+}
+\sort{
+\field{year}
+}
+}
+
+%\DeclareSortingScheme{autores}{
+%\sort{
+%\field{author}
+%}
+%\sort{
+%\field{year}
+%}
+%}
+
+\addbibresource{database.bib}
+
+%\paperwidth=21cm
+%\paperheight=14.85cm
+%\voffset=-1.5cm
+%\hoffset=-0.5cm
+%\topmargin=0pt
+%\oddsidemargin=0cm
+%\evensidemargin=0cm
+
+
+%\topskip=0pt
+%\headheight=28pt
+
+%\textheight=7cm
+%\textwidth=17cm
+
+
+\newcommand{\changefont}[3]{\fontfamily{#1} \fontseries{#2} \fontshape{#3} 
+\selectfont}
+
+\begin{document}
+
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+
+\lhead{\changefont{cmss}{bx}{n} \small Cantos Populares}
+\chead{\changefont{cmss}{bx}{n} \Large Indice por Títulos}
+\rhead{\changefont{cmss}{bx}{n} \small Rev. 2015}
+\rfoot{\changefont{cmss}{bx}{n} \footnotesize TITULOS - \normalsize\thepage}
+
+
+
+%------------------------------------------
+
+%\begin{center}
+%{\LARGE\bf Indice de Títulos}
+%\end{center}
+
+
+\nocite{*}
+\printbibliography[heading=none]
+
+
+\end{document}

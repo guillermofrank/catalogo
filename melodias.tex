@@ -1,0 +1,90 @@
+\documentclass[a4paper,12pt,twocolumn]{article}
+
+\usepackage[a4paper,margin=1cm,tmargin=2.3cm,bmargin=2cm]{geometry}
+
+
+% tmargin=2.8cm,bmargin=0cm
+%                ,hmargin=1.0cm,vmargin=1.0cm
+%                tmargin=1.2cm, %top margin = 1.2 cm
+%                bmargin=0.8cm, %bottom margin = 0.8 cm
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage[backend=biber,sorting=melodias]{biblatex}
+
+\DeclareFieldFormat[inbook]{origlanguage}{\small\textsc{#1}} 
+\DeclareFieldFormat[inbook]{title}{\bf#1.} 
+
+\renewcommand{\baselinestretch}{0.8} 
+\setlength{\biblabelsep}{0pt}
+%\setlength{\labelsep}{0pt}
+%\setlength{\itemindent}{0pt}
+%\setlength{\leftmargin}{0pt}
+\setlength{\bibitemsep}{0pt}
+%\setlength{\bibhang}{0pt}
+%\setlength{\bibnamesep}{0pt}
+%\setlength{\itemsep}{0pt}
+%\setlength{\parsep}{0pt}
+
+\newbibmacro*{bib:svauthor}{%
+  \savefield{origlanguage}{\lastfield}}
+
+\newbibmacro*{verifyauthor}{%
+    \iffieldequals{origlanguage}{\lastfield}
+        {}
+        {{\\ \printfield{origlanguage}}\\}%
+    \usebibmacro{bib:svauthor}}
+
+\newbibmacro*{newauthor}{%
+    \usebibmacro{verifyauthor}}
+
+
+\DeclareBibliographyDriver{inbook}{
+ \usebibmacro{newauthor}%
+  {%
+  \unspace
+  \footnotesize{\it\hspace*{6mm}ver\addspace}\printfield{title}%
+  }
+  \finentry}
+  
+\DeclareSortingScheme{melodias}{
+\sort{\field{origlanguage}}
+\sort{\field{title}}
+}
+
+\DeclareFieldFormat{labelnumberwidth}{}%
+
+\addbibresource{database.bib}
+
+\newcommand{\changefont}[3]{\fontfamily{#1} \fontseries{#2} \fontshape{#3} 
+\selectfont}
+
+\begin{document}
+
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+
+\lhead{\changefont{cmss}{bx}{n} \small Cantos Religiosos Populares}
+\chead{\changefont{cmss}{bx}{n} \Large Melodías}
+\rhead{\changefont{cmss}{bx}{n} \small rev. 2015}
+\rfoot{\changefont{cmss}{bx}{n} \footnotesize MELODIAS - 
+\normalsize\thepage}
+
+
+
+%------------------------------------------
+
+%\begin{center}
+%{\LARGE\bf Indice de Títulos}
+%\end{center}
+
+
+\nocite{*}
+\printbibliography[omitnumbers=true,notkeyword=complementaria,heading=none]
+
+
+\end{document}

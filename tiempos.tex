@@ -1,0 +1,104 @@
+\documentclass[a4paper,12pt,twocolumn]{article}
+
+\usepackage[a4paper,margin=1cm,tmargin=2.3cm,bmargin=2cm]{geometry}
+
+
+% tmargin=2.8cm,bmargin=0cm
+%                ,hmargin=1.0cm,vmargin=1.0cm
+%                tmargin=1.2cm, %top margin = 1.2 cm
+%                bmargin=0.8cm, %bottom margin = 0.8 cm
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage[backend=biber,style=alphabetic,sorting=titulos]{biblatex}
+
+
+\DeclareLabelalphaTemplate{% 
+  \labelelement{%
+    \field{series}% 
+    \field{pages}%
+  }
+}
+
+%\DeclareFieldFormat[inbook]{series}{#1.} 
+\DeclareFieldFormat[inbook]{title}{#1.} 
+
+\renewcommand{\baselinestretch}{0.8} 
+%\setlength{\biblabelsep}{0pt}
+\setlength{\bibitemsep}{0pt}
+
+\DeclareBibliographyDriver{inbook}{%
+  {\small\printfield{title}}%
+  \finentry}
+  
+\DeclareSortingScheme{titulos}{
+\sort{
+\field[padside=left,padwidth=2,padchar=0]{series}
+%\field{pages}
+%\field{title}
+}
+\sort{
+\field{title}
+}
+%\iffieldequals{pages}{{.}}%
+%{\sort{\field{title}}}
+%{\sort{\field{pages}}}
+}
+
+%\DeclareFieldFormat{labelnumberwidth}{}%
+%\DeclareFieldFormat{labelnumberwidth}{#1.}
+\DeclareFieldFormat[inbook]{series}{#1} 
+\DeclareFieldFormat[inbook]{pages}{#1} 
+\DeclareFieldFormat{labelalphawidth}{\footnotesize\sc\printfield{series}.%
+}
+
+\addbibresource{database.bib}
+
+\newcommand{\changefont}[3]{\fontfamily{#1} \fontseries{#2} \fontshape{#3} 
+\selectfont}
+
+\begin{document}
+
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+
+\lhead{\changefont{cmss}{bx}{n} \small Cantos Religiosos Populares}
+\chead{\changefont{cmss}{bx}{n} \Large Tiempos Litúrgicos}
+\rhead{\changefont{cmss}{bx}{n} \small rev. 2015}
+\rfoot{\changefont{cmss}{bx}{n} \footnotesize TIEMPOS LITÚRGICOS - 
+\normalsize\thepage}
+
+
+
+%------------------------------------------
+
+\nocite{*}
+
+{\noindent \bf\sc  Adviento}
+\printbibliography[omitnumbers=false,keyword=adviento,heading=none]
+
+{\noindent \bf\sc  Navidad y Epifanía}
+\printbibliography[omitnumbers=false,keyword=epifania,heading=none]
+
+{\noindent \bf\sc  Cuaresma}
+\printbibliography[omitnumbers=false,keyword=cuaresma,heading=none]
+
+{\noindent \bf\sc  Semana Santa}
+\printbibliography[omitnumbers=false,keyword=semana,heading=none]
+
+{\noindent \bf\sc  Pascua}
+\printbibliography[omitnumbers=false,keyword=pascua,heading=none]
+
+{\noindent \bf\sc  Pentecostés y solemnidades del Señor}
+\printbibliography[omitnumbers=false,keyword=pentecostes,heading=none]
+
+{\noindent \bf\sc  Ordinario}
+\printbibliography[omitnumbers=false,keyword=ordinario,heading=none]
+
+
+
+\end{document}

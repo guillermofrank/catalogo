@@ -1,0 +1,59 @@
+#!/bin/bash
+
+cp database.bib titulos.bib
+cp database.bib lineas.bib
+cp database.bib biblia.bib
+cp database.bib melodias.bib
+cp database.bib autores.bib
+cp database.bib compositores.bib
+cp database.bib liturgia.bib
+cp database.bib tiempos.bib
+
+echo latex...
+
+latex -interaction=batchmode database.tex      > /dev/null
+latex -interaction=batchmode titulos.tex       > /dev/null
+latex -interaction=batchmode lineas.tex        > /dev/null
+latex -interaction=batchmode biblia.tex        > /dev/null
+latex -interaction=batchmode melodias.tex      > /dev/null
+latex -interaction=batchmode autores.tex       > /dev/null
+latex -interaction=batchmode compositores.tex  > /dev/null
+latex -interaction=batchmode liturgia.tex      > /dev/null
+latex -interaction=batchmode tiempos.tex       > /dev/null
+
+biber database
+biber titulos
+biber lineas
+biber biblia
+biber melodias
+biber autores
+biber compositores
+biber liturgia
+biber tiempos
+
+echo first pdflatex...
+
+pdflatex -interaction=batchmode titulos.tex       > /dev/null
+pdflatex -interaction=batchmode lineas.tex        > /dev/null
+pdflatex -interaction=batchmode biblia.tex        > /dev/null
+pdflatex -interaction=batchmode melodias.tex      > /dev/null
+pdflatex -interaction=batchmode autores.tex       > /dev/null
+pdflatex -interaction=batchmode compositores.tex  > /dev/null
+pdflatex -interaction=batchmode liturgia.tex      > /dev/null
+pdflatex -interaction=batchmode tiempos.tex       > /dev/null
+
+echo second pdflatex...
+
+pdflatex -interaction=batchmode titulos.tex       > /dev/null
+pdflatex -interaction=batchmode lineas.tex        > /dev/null
+pdflatex -interaction=batchmode biblia.tex        > /dev/null
+pdflatex -interaction=batchmode melodias.tex      > /dev/null
+pdflatex -interaction=batchmode autores.tex       > /dev/null
+pdflatex -interaction=batchmode compositores.tex  > /dev/null
+pdflatex -interaction=batchmode liturgia.tex      > /dev/null
+pdflatex -interaction=batchmode tiempos.tex       > /dev/null
+
+echo merging...
+
+pdftk titulos.pdf lineas.pdf melodias.pdf autores.pdf compositores.pdf biblia.pdf tiempos.pdf liturgia.pdf cat output catalogo.pdf
+

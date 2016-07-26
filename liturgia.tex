@@ -1,0 +1,89 @@
+\documentclass[a4paper,12pt,twocolumn]{article}
+
+\usepackage[a4paper,margin=1cm,tmargin=2.3cm,bmargin=2cm]{geometry}
+
+
+% tmargin=2.8cm,bmargin=0cm
+%                ,hmargin=1.0cm,vmargin=1.0cm
+%                tmargin=1.2cm, %top margin = 1.2 cm
+%                bmargin=0.8cm, %bottom margin = 0.8 cm
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage[backend=biber,sorting=titulos]{biblatex}
+
+\DeclareFieldFormat[inbook]{series}{#1.} 
+\DeclareFieldFormat[inbook]{title}{#1.} 
+
+\renewcommand{\baselinestretch}{0.8} 
+\setlength{\biblabelsep}{0pt}
+\setlength{\bibitemsep}{0pt}
+
+\DeclareBibliographyDriver{inbook}{%
+  {\hspace{6mm}\small\printfield{title}}%
+  \finentry}
+  
+\DeclareSortingScheme{titulos}{
+\sort{
+\field{title}
+}
+\sort{
+\field{series}
+}
+}
+
+\DeclareFieldFormat{labelnumberwidth}{}%
+
+\addbibresource{database.bib}
+
+\newcommand{\changefont}[3]{\fontfamily{#1} \fontseries{#2} \fontshape{#3} 
+\selectfont}
+
+\begin{document}
+
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+
+\lhead{\changefont{cmss}{bx}{n} \small Cantos Populares}
+\chead{\changefont{cmss}{bx}{n} \Large Uso Litúrgico}
+\rhead{\changefont{cmss}{bx}{n} \small Rev. 2015}
+\rfoot{\changefont{cmss}{bx}{n} \footnotesize USO LITÚRGICO - 
+\normalsize\thepage}
+
+
+
+%------------------------------------------
+
+\nocite{*}
+
+{\noindent \bf\sc  Alabanza y acción de gracias}
+\printbibliography[omitnumbers=true,keyword=gracias,heading=none]
+
+{\noindent \bf\sc  Devocionales}
+\printbibliography[omitnumbers=true,keyword=devocional,heading=none]
+
+{\noindent \bf\sc  Eucarísticos}
+\printbibliography[omitnumbers=true,keyword=eucaristico,heading=none]
+
+{\noindent \bf\sc  Marianos}
+\printbibliography[omitnumbers=true,keyword=mariano,heading=none]
+
+{\noindent \bf\sc  Meditacion}
+\printbibliography[omitnumbers=true,keyword=meditacion,heading=none]
+
+{\noindent \bf\sc  Ofertorio}
+\printbibliography[omitnumbers=true,keyword=ofertorio,heading=none]
+
+{\noindent \bf\sc  Ordinario de la misa}
+\printbibliography[omitnumbers=true,keyword=misa,heading=none]
+
+{\noindent \normalsize\bf\sc Procesionales}
+\printbibliography[omitnumbers=true,notkeyword=complementaria,
+keyword=procesional,heading=none]
+
+
+\end{document}
